@@ -1,0 +1,9 @@
+a(href="/todos/create") New
+
+form(action="/todos", method="GET")
+  input(type="text" name="q" value=`${search || " "}`)
+  button Search
+  
+ul
+  each todo in todoList
+    li= todo.name
