@@ -1,0 +1,12 @@
+h1 Manager Users
+
+a(href="/users/create")
+  h1 Create a user
+  
+ul
+ each user in users
+   li
+     span
+       b= user.name
+     a(href="/users/"+user.id+"/update", style="margin-left: 10px;") Update
+     a(href="/users/"+user.id+"/delete", style="margin-left: 10px;") Delete

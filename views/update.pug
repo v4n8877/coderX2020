@@ -1,0 +1,16 @@
+h1 Update title of a book
+
+form(action="/books/update", method="POST")
+  div(style="display: flex; margin-bottom: 5px")
+      lable(style="flex-basis: 18%;")
+        b ID book
+      input(type="text", name="id", value=`${book.id}`, readonly, style="background-color: grey;")
+  div(style="display: flex; margin-bottom: 5px")
+    lable(style="flex-basis: 18%;")
+      b Title
+    input(type="text", name="title", value=`${book.title}`)
+  div(style="display: flex; margin-bottom: 5px")
+    lable(style="flex-basis: 18%;")
+      b Description
+    input(type="text", name="des", value=`${book.des}`, readonly, style="background-color: grey;")
+  button Update

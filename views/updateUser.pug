@@ -1,0 +1,16 @@
+h1 Update information user
+
+form(action="/users/update", method="POST")
+  div(style="display: flex; margin-bottom: 5px")
+      lable(style="flex-basis: 18%;")
+        b ID user
+      input(type="text", name="id", value=`${user.id}`, readonly, style="background-color: grey;")
+  div(style="display: flex; margin-bottom: 5px")
+    lable(style="flex-basis: 18%;")
+      b Name
+    input(type="text", name="name", value=`${user.name}`)
+  div(style="display: flex; margin-bottom: 5px")
+    lable(style="flex-basis: 18%;")
+      b Email
+    input(type="text", name="email", value=`${user.email}`)
+  button Update
