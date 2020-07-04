@@ -1,0 +1,14 @@
+h1 Manager Transactions
+
+a(href="/trans/create")
+  h1 Create a transaction
+  
+ul
+ each tran in trans
+   li
+     span
+       b= tran.userId
+     span
+       b= tran.bookId
+     a(href="/trans/"+tran.id+"/update", style="margin-left: 10px;") Update
+     a(href="/trans/"+tran.id+"/delete", style="margin-left: 10px;") Delete

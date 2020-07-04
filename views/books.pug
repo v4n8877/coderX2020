@@ -1,0 +1,12 @@
+h1 Manager Books
+
+a(href="/books/create")
+  h1 Create a book
+  
+ul
+ each book in books
+   li
+     span
+       b= book.title
+     a(href="/books/"+book.id+"/update", style="margin-left: 10px;") Update
+     a(href="/books/"+book.id+"/delete", style="margin-left: 10px;") Delete
