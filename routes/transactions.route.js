@@ -16,6 +16,9 @@ router.get('/:transId/update', controller.idUpdate);
 
 router.post('/update', controller.transUpdated);
 
+// params trans complete
+router.get('/:transId/complete', controller.completeTrans);
+
 // params delete trans
 router.get('/:transId/delete', controller.deleteTrans);
 

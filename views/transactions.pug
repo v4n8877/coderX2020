@@ -6,9 +6,12 @@ a(href="/trans/create")
 ul
  each tran in trans
    li
-     span
-       b= tran.userId
-     span
-       b= tran.bookId
-     a(href="/trans/"+tran.id+"/update", style="margin-left: 10px;") Update
-     a(href="/trans/"+tran.id+"/delete", style="margin-left: 10px;") Delete
+    span
+      b= tran.userId   
+    span(style="margin-left: 10px;")
+      b= tran.bookId   
+    span(style="margin-left: 10px;")
+      b= tran.isComplete || false
+    a(href="/trans/"+tran.id+"/update", style="margin-left: 10px;") Update
+    a(href="/trans/"+tran.id+"/delete", style="margin-left: 10px;") Delete
+    a(href="/trans/"+tran.id+"/complete", style="margin-left: 10px;") Complete

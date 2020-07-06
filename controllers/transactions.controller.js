@@ -31,12 +31,20 @@ module.exports.idUpdate = (req, res) => {
 };
 
 module.exports.transUpdated = (req, res) => {
-  console.log(req.body);
   db.get('trans')
   .find({ id: req.body.id })
   .assign({ userId: req.body.userId, bookId: req.body.bookId})
   .write();
   
+  res.redirect('/trans');
+};
+
+module.exports.completeTrans = (req, res) => {
+  const transId = req.params.transId;
+  db.get('trans')
+  .find({ id: transId })
+  .assign({ isComplete: true})
+  .write();
   res.redirect('/trans');
 };
 
