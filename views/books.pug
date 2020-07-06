@@ -1,12 +1,25 @@
-h1 Manager Books
+extends ./layouts/common.pug
 
-a(href="/books/create")
-  h1 Create a book
-  
-ul
- each book in books
-   li
-     span
-       b= book.title
-     a(href="/books/"+book.id+"/update", style="margin-left: 10px;") Update
-     a(href="/books/"+book.id+"/delete", style="margin-left: 10px;") Delete
+block content
+  h1(style="text-align: center; margin-top: 1.5rem") Manager Books
+
+  a(href="/books/create")
+    h3 Create a book
+  table.table
+    thead.thead-dark
+      tr
+        th(scope="col") ID
+        th(scope="col") Title
+        th(scope="col") action
+    tbody
+    each book in books
+      tr
+        th(scope='row')
+          span
+            b= book.id
+        td
+          span
+            b= book.title
+        td 
+          a(href="/books/"+book.id+"/update", style="margin-left: 10px;") Update
+          a(href="/books/"+book.id+"/delete", style="margin-left: 10px;") Delete  

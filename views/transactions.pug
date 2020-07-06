@@ -1,17 +1,30 @@
-h1 Manager Transactions
+extends ./layouts/common.pug
 
-a(href="/trans/create")
-  h1 Create a transaction
-  
-ul
- each tran in trans
-   li
-    span
-      b= tran.userId   
-    span(style="margin-left: 10px;")
-      b= tran.bookId   
-    span(style="margin-left: 10px;")
-      b= tran.isComplete || false
-    a(href="/trans/"+tran.id+"/update", style="margin-left: 10px;") Update
-    a(href="/trans/"+tran.id+"/delete", style="margin-left: 10px;") Delete
-    a(href="/trans/"+tran.id+"/complete", style="margin-left: 10px;") Complete
+block content
+  h1(style="text-align: center; margin-top: 1.5rem") Manager Transactions
+
+  a(href="/trans/create")
+    h3 Create a transaction
+  table.table
+    thead.thead-dark
+      tr
+        th(scope="col") ID
+        th(scope="col") Title
+        th(scope="col") Complete
+        th(scope="col") action
+    tbody
+    each tran in trans
+      tr
+        th(scope='row')
+          span
+            b= tran.userId
+        td
+          span
+            b= tran.bookId
+        td
+          span
+            b= tran.isComplete || false
+        td 
+          a(href="/trans/"+tran.id+"/update") Update
+          a(href="/trans/"+tran.id+"/delete", style="margin-left: 10px;") Delete
+          a(href="/trans/"+tran.id+"/complete", style="margin-left: 10px;") Complete

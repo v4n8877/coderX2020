@@ -1,12 +1,15 @@
-h1 Create a user
+extends ./layouts/common.pug
 
-form(action="/users/create", method="POST")
-  div(style="display: flex; margin-bottom: 5px")
-    lable(style="flex-basis: 18%;")
-      b Name
-    input(type="text", name="name")
-  div(style="display: flex; margin-bottom: 5px")
-    lable(style="flex-basis: 18%;")
-      b Email
-    input(type="text", name="email")
-  button Create
+block content
+  h1 Create a user
+
+  form(action="/users/create", method="POST")
+    div(style="display: flex; margin-bottom: 5px")
+      lable(style="flex-basis: 18%;")
+        b Name
+      input(type="text", name="name")
+    div(style="display: flex; margin-bottom: 5px")
+      lable(style="flex-basis: 18%;")
+        b Email
+      input(type="text", name="email")
+    button Create

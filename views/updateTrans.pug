@@ -1,17 +1,20 @@
-h1 Create a book
+extends ./layouts/common.pug
 
-form(action="/trans/update", method="POST")
-  div(style="display: flex; margin-bottom: 5px")
-    input(type="text", name="id", value=`${transId}`, style="display: none")
-    lable(style="flex-basis: 18%;")
-      b User
-    select(name="userId")
-      each user in users
-        option(value=`${user.id}`)= user.name
-  div(style="display: flex; margin-bottom: 5px")
-    lable(style="flex-basis: 18%;")
-      b Book
-    select(name="bookId")
-      each book in books
-        option(value=`${book.id}`)= book.title
-  button Create
+block content
+  h1 Create a book
+
+  form(action="/trans/update", method="POST")
+    div(style="display: flex; margin-bottom: 5px")
+      input(type="text", name="id", value=`${transId}`, style="display: none")
+      lable(style="flex-basis: 18%;")
+        b User
+      select(name="userId")
+        each user in users
+          option(value=`${user.id}`)= user.name
+    div(style="display: flex; margin-bottom: 5px")
+      lable(style="flex-basis: 18%;")
+        b Book
+      select(name="bookId")
+        each book in books
+          option(value=`${book.id}`)= book.title
+    button Create
