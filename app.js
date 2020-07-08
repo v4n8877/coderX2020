@@ -10,7 +10,7 @@ const port = 3000
 
 app.set('view engine', 'pug');
 app.set('views','./views');
-
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Route books
