@@ -16,6 +16,7 @@ module.exports.createTrans = (req, res) => {
 
 module.exports.transCreated = (req, res) => {
   req.body.id = shortid.generate();
+  req.body.isComplete = false;
   db.get('trans').push(req.body).write();
   res.redirect('/trans');
 };
@@ -41,11 +42,21 @@ module.exports.transUpdated = (req, res) => {
 
 module.exports.completeTrans = (req, res) => {
   const transId = req.params.transId;
-  db.get('trans')
-  .find({ id: transId })
-  .assign({ isComplete: true})
-  .write();
-  res.redirect('/trans');
+  var errors = [];
+  var checkId = db.get('trans').find({ id: transId }).value();
+  if(!checkId) {
+    errors.push(`${transId} does not exist`);
+    res.render('transactions', {
+      trans: db.get('trans').value(),
+      errors: errors
+    });
+  } else {
+    db.get('trans')
+    .find({ id: transId })
+    .assign({ isComplete: true})
+    .write();
+    res.redirect('/trans');
+  }
 };
 
 module.exports.deleteTrans = (req, res) => {

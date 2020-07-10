@@ -4,12 +4,12 @@ block content
   h1 Create a book
 
   form(action="/books/create", method="POST")
-    div(style="display: flex; margin-bottom: 5px")
-      lable(style="flex-basis: 18%;")
+    div.form-group
+      lable
         b Title
-      input(type="text", name="title")
-    div(style="display: flex; margin-bottom: 5px")
-      lable(style="flex-basis: 18%;")
+      input.form-control(type="text", name="title")
+    div.form-group
+      lable
         b Description
-      input(type="text", name="des")
-    button Create
+      input.form-control(type="text", name="des")
+    button.btn.btn-primary Create
