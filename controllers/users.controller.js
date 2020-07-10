@@ -17,8 +17,8 @@ module.exports.createUser = (req, res) => {
   var errors = [];
   if(!req.body.name && !req.body.email) {
     errors.push('Please fill form');
-  }else if(!req.body.name) {
-    errors.push('Name is required');
+  }else if(!req.body.name || req.body.name.length < 30) {
+    errors.push('Name is required or Name is not enough 30 characters');
   }else if(!req.body.name) {
     errors.push('Email is required');
   }
