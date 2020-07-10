@@ -1,12 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const shortid = require('shortid');
-const bodyParser = require('body-parser');
-
-const db = require('../db');
-
 const controller = require('../controllers/users.controller');
+const validateUser = require('../validate/users.validate');
 
 // params get users
 router.get('/', controller.index);
@@ -14,7 +10,7 @@ router.get('/', controller.index);
 // params create user
 router.get('/create', controller.toCreate);
 
-router.post('/create', controller.createUser);
+router.post('/create', validateUser.createUser, controller.createUser);
 
 // params update user
 router.get('/:userId/update', controller.idUpdate);

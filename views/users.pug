@@ -10,6 +10,7 @@ block content
       tr
         th(scope="col") ID
         th(scope="col") Name
+        th(scope="col") Email
         th(scope="col") action
     tbody
     each user in users
@@ -20,6 +21,9 @@ block content
         td
           span
             b= user.name
+        td
+          span
+            b= user.email
         td 
           a(href="/users/"+user.id+"/update", style="margin-left: 10px;") Update
           a(href="/users/"+user.id+"/delete", style="margin-left: 10px;") Delete

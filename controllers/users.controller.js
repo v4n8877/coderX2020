@@ -14,25 +14,9 @@ module.exports.toCreate = (req, res) => {
 
 module.exports.createUser = (req, res) => {
   req.body.id = shortid.generate();
-  var errors = [];
-  if(!req.body.name && !req.body.email) {
-    errors.push('Please fill form');
-  }else if(!req.body.name || req.body.name.length < 30) {
-    errors.push('Name is required or Name is not enough 30 characters');
-  }else if(!req.body.name) {
-    errors.push('Email is required');
-  }
-  if(errors.length) {
-    res.render('createUser', {
-      errors: errors,
-      values: req.body
-    });
-    return;
-  } else {
-    db.get('users').push(req.body).write();
-    res.redirect('/users');
-    return;
-  }
+  
+  db.get('users').push(req.body).write();
+  res.redirect('/users');
 };
 
 module.exports.idUpdate = (req, res) => {

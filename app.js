@@ -6,7 +6,7 @@ const booksRoute = require('./routes/books.route');
 const transRoute = require('./routes/transactions.route');
 
 const app = express();
-const port = 3000
+const port = 3000;
 
 app.set('view engine', 'pug');
 app.set('views','./views');
