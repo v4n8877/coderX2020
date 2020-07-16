@@ -4,38 +4,44 @@
       "name": "v4n8877",
       "email": "v4n8877@gmail.com",
       "id": "LdrvmAj-v",
-      "password": "4297f44b13955235245b2497399d7a93",
-      "isAdmin": true
+      "password": "123123",
+      "isAdmin": true,
+      "wrongLoginCount": 1
     },
     {
       "name": "Ngô Ánh Vinh",
       "email": "vinh.ngoanh@yopmail.com",
       "id": "lzpMnVqGS",
-      "password": "4297f44b13955235245b2497399d7a93"
+      "password": "123123",
+      "wrongLoginCount": 0
     },
     {
       "name": "v4n8888",
       "email": "v4n8888@yopmail.com",
       "id": "pdS14DVvB",
-      "password": "4297f44b13955235245b2497399d7a93"
+      "password": "123123",
+      "wrongLoginCount": 0
     },
     {
       "name": "validate",
       "email": "validate@yopmail.com",
       "id": "ofh7kNOTn",
-      "password": "4297f44b13955235245b2497399d7a93"
+      "password": "123123",
+      "wrongLoginCount": 0
     },
     {
       "name": "Ngo Anh Vinh Ngo Anh Vinh Ngo Anh Vinh",
       "email": "30characters@yopmail.com",
       "id": "bTMM8x11I",
-      "password": "4297f44b13955235245b2497399d7a93"
+      "password": "123123",
+      "wrongLoginCount": 0
     },
     {
       "name": "Ngo Anh Vinh",
       "email": "midleware@yopmail.com",
       "id": "oys25qPge",
-      "password": "4297f44b13955235245b2497399d7a93"
+      "password": "123123",
+      "wrongLoginCount": 0
     }
   ],
   "books": [

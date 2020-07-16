@@ -1,4 +1,5 @@
-const md5 = require('md5');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const db = require('../db');
 
 module.exports.login =  (req, res) => {
@@ -19,12 +20,22 @@ module.exports.postLogin =  (req, res) => {
     });
     return;
   }
-  const hashedPassword = md5(password)
-  if(user.password !== hashedPassword) {
-    res.render('auth/login', {
-      errors: ['Wrong password.'],
-      values: {email: req.body.email}
-    });
+  const hash = bcrypt.hashSync(password, saltRounds);
+  const checkPassword = bcrypt.compareSync(user.password, hash);
+  if(!checkPassword) {
+    if(user.wrongLoginCount <= 4) {
+      const newWrongCount = user.wrongLoginCount++;
+      db.get('users').find({email: email}).push({wrongLoginCount: newWrongCount}).write();
+      res.render('auth/login', {
+        errors: ['Wrong password.'],
+        values: {email: req.body.email}
+      });
+    } else {
+      res.render('auth/login', {
+        errors: ['Wrong password more than 4 times.'],
+        values: {email: req.body.email}
+      });
+    }
     return;
   }
   res.cookie('userId', user.id);
