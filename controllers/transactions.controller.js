@@ -4,9 +4,10 @@ const db = require('../db');
 module.exports.index = (req, res) => {
   const userId = req.cookies.userId;
   const getTrans = db.get('trans').find({userId: userId}).value();
-
+  const getUser = db.get('users').find({id: userId}).value();
   res.render('transactions', {
-    trans: [getTrans]
+    trans: [getTrans],
+    user: getUser,
   });
 };
 
