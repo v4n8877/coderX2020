@@ -27,7 +27,7 @@ html
               span.sr-only(current)
           li.nav-item
             a.nav-link(href='/books') Books
-          if user && !user.isAdmin || !user
+          if user && !user.isAdmin
             li.nav-item
               a.nav-link(href='/trans') Transactions
     .container.pt-5

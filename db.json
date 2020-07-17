@@ -13,6 +13,7 @@
       "email": "vinh.ngoanh@yopmail.com",
       "id": "lzpMnVqGS",
       "password": "123123",
+      "isAdmin": false,
       "wrongLoginCount": 0
     },
     {
@@ -20,6 +21,7 @@
       "email": "v4n8888@yopmail.com",
       "id": "pdS14DVvB",
       "password": "123123",
+      "isAdmin": false,
       "wrongLoginCount": 0
     },
     {
@@ -27,6 +29,7 @@
       "email": "validate@yopmail.com",
       "id": "ofh7kNOTn",
       "password": "123123",
+      "isAdmin": false,
       "wrongLoginCount": 0
     },
     {
@@ -34,6 +37,7 @@
       "email": "30characters@yopmail.com",
       "id": "bTMM8x11I",
       "password": "123123",
+      "isAdmin": false,
       "wrongLoginCount": 0
     },
     {
@@ -41,6 +45,7 @@
       "email": "midleware@yopmail.com",
       "id": "oys25qPge",
       "password": "123123",
+      "isAdmin": false,
       "wrongLoginCount": 0
     }
   ],

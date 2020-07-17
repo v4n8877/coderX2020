@@ -19,10 +19,10 @@ block content
       tr
         th(scope='row')
           span
-            b= tran.userId
+            b= tran.userId || ''
         td
           span
-            b= tran.bookId
+            b= tran.bookId || ''
         td
           span
             b= tran.isComplete || false

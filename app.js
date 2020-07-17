@@ -15,7 +15,7 @@ app.set('view engine', 'pug');
 app.set('views','./views');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
+app.use(cookieParser('login'));
 
 // Route books
 app.use('/books', authMidleware.requireAuth, booksRoute);
