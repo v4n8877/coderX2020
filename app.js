@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
@@ -15,7 +16,7 @@ app.set('view engine', 'pug');
 app.set('views','./views');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser('login'));
+app.use(cookieParser(process.env.SESION_SECRET));
 
 // Route books
 app.use('/books', authMidleware.requireAuth, booksRoute);
