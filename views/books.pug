@@ -38,10 +38,13 @@ block content
         if count === currentPage
           li.page-item.active
             a.page-link(href="/books?page="+`${count}` name="page")= count
+        else if count === '...'
+          li.page-item.disabled
+            a.page-link(href="/books?page="+`${count}` name="page")= count
         else
           li.page-item
             a.page-link(href="/books?page="+`${count}` name="page")= count
-      if currentPage >= pageCount.length
+      if currentPage >= pageCount[pageCount.length - 1]
         li.page-item.disabled
           a.page-link(href="/books?page="+`${currentPage >= pageCount.length ? currentPage : currentPage + 1}` name="page") Next
       else
