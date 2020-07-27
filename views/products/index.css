@@ -1,0 +1,8 @@
+.card__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card {
+  flex: 0 0 23%;
+  margin-bottom: 2rem;
+}

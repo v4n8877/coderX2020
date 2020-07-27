@@ -2,8 +2,17 @@ const shortid = require('shortid');
 const db = require('../db');
 
 module.exports.index = (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const perPage = 10;
+  const startPage = (page - 1) * 10;
+  const endPage = page * perPage;
+  const pageCount = Math.ceil(db.get('books').value().length / perPage);
+  const convertPageCount = Array.from(Array(pageCount), (_, i) => i + 1);
+
   res.render('books', {
-    books: db.get('books').value()
+    books: db.get('books').value().slice(startPage, endPage),
+    pageCount: convertPageCount,
+    currentPage: page
   });
 };
 

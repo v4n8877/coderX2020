@@ -10,16 +10,40 @@ block content
       tr
         th(scope="col") ID
         th(scope="col") Title
+        th(scope="col") Image
         th(scope="col") action
     tbody
     each book in books
       tr
-        th(scope='row')
+        th(scope='row' style="vertical-align: middle;")
           span
             b= book.id
-        td
+        td(style="vertical-align: middle;")
           span
             b= book.title
-        td 
+        td(style="vertical-align: middle;")
+          img(src=`${book.image || ""}`, alt="", style="width: 260px; height: 280px;")
+        td(style="vertical-align: middle;")
           a(href="/books/"+book.id+"/update", style="margin-left: 10px;") Update
-          a(href="/books/"+book.id+"/delete", style="margin-left: 10px;") Delete  
+          a(href="/books/"+book.id+"/delete", style="margin-left: 10px;") Delete
+  nav(aria-label="Page navigation example")
+    ul.pagination
+      if currentPage > 1
+        li.page-item
+          a.page-link(href="/books?page="+`${currentPage > 1 ? currentPage - 1 : 1}` name="page") Previous
+      else
+        li.page-item.disabled
+          a.page-link(href="/books?page="+`${currentPage > 1 ? currentPage - 1 : 1}` name="page") Previous
+      each count in pageCount
+        if count === currentPage
+          li.page-item.active
+            a.page-link(href="/books?page="+`${count}` name="page")= count
+        else
+          li.page-item
+            a.page-link(href="/books?page="+`${count}` name="page")= count
+      if currentPage >= pageCount.length
+        li.page-item.disabled
+          a.page-link(href="/books?page="+`${currentPage >= pageCount.length ? currentPage : currentPage + 1}` name="page") Next
+      else
+        li.page-item
+          a.page-link(href="/books?page="+`${currentPage >= pageCount.length ? currentPage : currentPage + 1}` name="page") Next

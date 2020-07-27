@@ -1,0 +1,14 @@
+extends ../layouts/common.pug
+
+block content
+  h1 Product
+    div
+      input(type="text")
+      button.btn.btn-primary Search
+    div.card__list
+      each product in products
+        .card
+          img.card-img-top(src=`${product.image}` alt="Card image cap")
+          .card-body
+            h5.card-title=product.name
+            p.card-text=product.descprition
