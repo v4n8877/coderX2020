@@ -9,6 +9,7 @@ block content
     thead.thead-dark
       tr
         th(scope="col") ID
+        th(scope="col") Avatar
         th(scope="col") Name
         th(scope="col") Email
         th(scope="col") action
@@ -18,6 +19,9 @@ block content
         th(scope='row')
           span
             b= user.id
+        td
+          img(src=`${user.avatarUrl || 'https://image.shutterstock.com/image-vector/male-default-avatar-profile-gray-260nw-387037984.jpg'}`
+            width="64px" height="64px")
         td
           span
             b= user.name

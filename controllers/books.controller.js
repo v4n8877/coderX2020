@@ -8,9 +8,7 @@ module.exports.index = (req, res) => {
   const startPage = (page - 1) * 10;
   const endPage = page * perPage;
   const pageCount = Math.ceil(db.get('books').value().length / perPage);
-  const convertPageCount = Array.from(Array(pageCount), (_, i) => i + 1);
   const newPagination = makePagination.customPagination(page, pageCount);
-  console.log("a", newPagination)
   res.render('books', {
     books: db.get('books').value().slice(startPage, endPage),
     pageCount: newPagination,

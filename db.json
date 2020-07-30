@@ -33,12 +33,14 @@
       "wrongLoginCount": 0
     },
     {
-      "name": "Ngo Anh Vinh Ngo Anh Vinh Ngo Anh Vinh",
+      "name": "Ngo  Vinh",
       "email": "30characters@yopmail.com",
       "id": "bTMM8x11I",
       "password": "123123",
       "isAdmin": false,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 0,
+      "avatar": "uploads/78f17ff6c86f3773fae971edaa4ab5fd",
+      "avatarUrl": "http://res.cloudinary.com/v4n8877/image/upload/v1596083816/yp6qxrgdqtlnpbeytmyc.jpg"
     },
     {
       "name": "Ngo Anh Vinh",

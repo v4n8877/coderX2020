@@ -1,6 +1,5 @@
 module.exports.createUser = function(req, res, next) {
   var errors = [];
-
   if(!req.body.name && !req.body.email) {
     errors.push('Please fill form');
   }else if(!req.body.name || req.body.name.length < 10) {
