@@ -5,7 +5,10 @@ module.exports.requireAuth = (req, res, next) => {
     res.redirect('/auth/login');
     return;
   }
-  const findUser = db.get('users').find({id: req.signedCookies.userId}).value();
+  const findUser = db
+    .get('users')
+    .find({id: req.signedCookies.userId})
+    .value();
 
   if(!findUser) {
     res.redirect('/auth/login');

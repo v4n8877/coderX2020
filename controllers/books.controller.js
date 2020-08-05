@@ -3,16 +3,23 @@ const db = require('../db');
 const makePagination = require('../midlewares/pagination.midleware');
 
 module.exports.index = (req, res) => {
+  const userId = req.cookies.userId;
+  const getUser = db.get('users').find({id: userId}).value();
+
   const page = parseInt(req.query.page) || 1;
   const perPage = 10;
   const startPage = (page - 1) * 10;
   const endPage = page * perPage;
   const pageCount = Math.ceil(db.get('books').value().length / perPage);
   const newPagination = makePagination.customPagination(page, pageCount);
+  const quantity = req.signedCookies.quantityBook;
+
   res.render('books', {
     books: db.get('books').value().slice(startPage, endPage),
     pageCount: newPagination,
-    currentPage: page
+    currentPage: page,
+    users: getUser,
+    quantity: quantity || 0,
   });
 };
 

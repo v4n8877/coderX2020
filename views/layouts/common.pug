@@ -27,6 +27,7 @@ html
               span.sr-only(current)
           li.nav-item
             a.nav-link(href='/books') Books
+              span= quantity
           if user && !user.isAdmin
             li.nav-item
               a.nav-link(href='/trans') Transactions

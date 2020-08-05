@@ -44,7 +44,6 @@ module.exports.postLogin =  (req, res) => {
         values: {email: req.body.email}
       });
       msg.to = req.body.email;
-      console.log('msg', msg)
       sgMail.send(msg, (error, result) => {
         if (error) {
             console.log(error);

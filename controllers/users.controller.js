@@ -3,11 +3,11 @@ const shortid = require('shortid');
 const db = require('../db');
 const cloudinary = require('cloudinary').v2;
 
-cloudinary.config({
-  cloud_name: 'v4n8877',
-  api_key: '791223667666661',
-  api_secret: 'tryp7Qm615EpbJf6IiqhkbZQXSE'
-});
+// cloudinary.config({
+//   cloud_name: 'v4n8877',
+//   api_key: '791223667666661',
+//   api_secret: 'tryp7Qm615EpbJf6IiqhkbZQXSE'
+// });
 
 module.exports.index =  (req, res) => {
   res.render('users', {

@@ -55,11 +55,13 @@
     {
       "title": "7 Dragon balls",
       "des": "Truyện kể về 1 đứa bé tại hành tình khác được gửi xuống trái đất, với mục đích làm quen và xâm chiếm trái đất của người saiya.",
-      "id": "uMRiObAc5"
+      "id": "uMRiObAc5",
+      "image": "https://qph.fs.quoracdn.net/main-qimg-580ac25acfb157fc6841e54331b132b6.webp"
     },
     {
       "title": "Những người khốn khổ",
       "des": "Mô tả về cuộc sống của người nghèo trong thế chiến thứ 2",
+      "image": "https://qph.fs.quoracdn.net/main-qimg-580ac25acfb157fc6841e54331b132b6.webp",
       "id": "3qw1d-3rR"
     },
     {
@@ -682,6 +684,31 @@
       "bookId": "3qw1d-3rR",
       "id": "LcCyVsBZ7",
       "isComplete": false
+    }
+  ],
+  "sessions": [
+    {
+      "id": "lSAKWbMUa",
+      "cart": {
+        "3qw1d-3rR": 7,
+        "82a42ba5-204e-4ac0-b06a-bc8f73e2415e": 2,
+        "uMRiObAc5": 7
+      }
+    },
+    {
+      "id": "WrvqiwWfs",
+      "cart": {
+        "uMRiObAc5": 2,
+        "3qw1d-3rR": 1,
+        "82a42ba5-204e-4ac0-b06a-bc8f73e2415e": 1
+      }
+    },
+    {
+      "id": "Kjxwys4rP",
+      "cart": {
+        "uMRiObAc5": 8,
+        "82a42ba5-204e-4ac0-b06a-bc8f73e2415e": 2
+      }
     }
   ]
 }
