@@ -1,26 +1,31 @@
-const shortid = require('shortid');
-const db = require('../db');
+
+const Books  = require('../models/books.model');
+const Users = require('../models/users.model');
 const makePagination = require('../midlewares/pagination.midleware');
 
 module.exports.index = (req, res) => {
-  const userId = req.cookies.userId;
-  const getUser = db.get('users').find({id: userId}).value();
-
-  const page = parseInt(req.query.page) || 1;
-  const perPage = 10;
-  const startPage = (page - 1) * 10;
-  const endPage = page * perPage;
-  const pageCount = Math.ceil(db.get('books').value().length / perPage);
-  const newPagination = makePagination.customPagination(page, pageCount);
-  const quantity = req.signedCookies.quantityBook;
-
-  res.render('books', {
-    books: db.get('books').value().slice(startPage, endPage),
-    pageCount: newPagination,
-    currentPage: page,
-    users: getUser,
-    quantity: quantity || 0,
-  });
+   
+  const listBook = async () => {
+    const userId = req.cookies.userId;
+    const getUser = await Users.findById(userId).exec();
+    Books.find().then((books)=> {
+      const page = parseInt(req.query.page) || 1;
+      const perPage = 10;
+      const startPage = (page - 1) * 10;
+      const endPage = page * perPage;
+      const pageCount = Math.ceil(books.length / perPage);
+      const newPagination = makePagination.customPagination(page, pageCount);
+      const quantity = req.signedCookies.quantityBook;
+      res.render('books', {
+        books: books.slice(startPage, endPage),
+        pageCount: newPagination,
+        currentPage: page,
+        users: getUser,
+        quantity: quantity || 0,
+      })
+    })
+  }
+  listBook();
 };
 
 module.exports.toCreate = (req, res) => {
@@ -28,32 +33,38 @@ module.exports.toCreate = (req, res) => {
 };
 
 module.exports.createBook = (req, res) => {
-  req.body.id = shortid.generate();
-  db.get('books').push(req.body).write();
-  res.redirect('/books');
+  // Books.create(req.body, function (err, book) {
+  //   if (err) {
+  //     return err;
+  //   } else {
+  //     res.redirect('/books');
+  //   }
+    
+  // });
+  
 };
 
 module.exports.deleteBook = (req, res) => {
   const bookId = req.params.bookId;
-  db.get('books').remove({ id: bookId }).write();
+  Books.findOneAndRemove({ _id: bookId });
   res.redirect('/books');
 }
 
 module.exports.updateTitle = (req, res) => {
-  const bookId = req.params.bookId;
-  const book = db.get('books').filter((book) => {
-    return book.id === bookId;
-  }).value();
-  res.render('update', {
-    book: book[0]
-  });
+  // const bookId = req.params.bookId;
+  // const book = db.get('books').filter((book) => {
+  //   return book.id === bookId;
+  // }).value();
+  // res.render('update', {
+  //   book: book[0]
+  // });
 };
 
 module.exports.titleUpdated = (req, res) => {
-  db.get('books')
-  .find({ id: req.body.id })
-  .assign({ title: req.body.title })
-  .write();
+  // db.get('books')
+  // .find({ id: req.body.id })
+  // .assign({ title: req.body.title })
+  // .write();
   
-  res.redirect('/books');
+  // res.redirect('/books');
 };
