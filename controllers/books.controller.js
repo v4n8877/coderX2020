@@ -3,24 +3,32 @@ const Users = require('../models/users.model');
 const makePagination = require('../midlewares/pagination.midleware');
 
 module.exports.index = async (req, res) => {
-  const userId = req.cookies.userId;
-  const getUser = await Users.findById(userId).exec();
-  Books.find().then((books)=> {
-    const page = parseInt(req.query.page) || 1;
-    const perPage = 10;
-    const startPage = (page - 1) * 10;
-    const endPage = page * perPage;
-    const pageCount = Math.ceil(books.length / perPage);
-    const newPagination = makePagination.customPagination(page, pageCount);
-    const quantity = req.signedCookies.quantityBook;
-    res.render('books', {
-      books: books.slice(startPage, endPage),
-      pageCount: newPagination,
-      currentPage: page,
-      users: getUser,
-      quantity: quantity || 0,
+  
+  try {
+    const userId = req.cookies.userId;
+    const getUser = await Users.findById(userId).exec();
+    var a;
+    a.b();
+    Books.find().then((books)=> {
+      const page = parseInt(req.query.page) || 1;
+      const perPage = 10;
+      const startPage = (page - 1) * 10;
+      const endPage = page * perPage;
+      const pageCount = Math.ceil(books.length / perPage);
+      const newPagination = makePagination.customPagination(page, pageCount);
+      const quantity = req.signedCookies.quantityBook;
+      res.render('books', {
+        books: books.slice(startPage, endPage),
+        pageCount: newPagination,
+        currentPage: page,
+        users: getUser,
+        quantity: quantity || 0,
+      })
     })
-  })
+  } catch (err) {
+    res.render('msgErr.pug')
+  }
+
 };
 
 module.exports.toCreate = (req, res) => {
