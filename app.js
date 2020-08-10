@@ -10,7 +10,9 @@ const booksRoute = require('./routes/books.route');
 const transRoute = require('./routes/transactions.route');
 const authRoute = require('./routes/auth.route');
 const cartRoute = require('./routes/cart.route');
+//API route
 const userApiRoute = require('./api/routes/auth.route');
+const transactionsAPIroute =  require('./api/routes/transaction.route');
 
 const authMidleware = require('./midlewares/auth.midleware');
 const sessionMidleware = require('./midlewares/session.midleware');
@@ -44,6 +46,9 @@ app.use('/auth', authRoute);
 
 //Route api auth
 app.use('/api/login', userApiRoute);
+
+//Route api auth
+app.use('/api/transactions', transactionsAPIroute);
 
 // listen for requests :)
 const listener = app.listen(port, () => {
