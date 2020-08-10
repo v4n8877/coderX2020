@@ -1,31 +1,26 @@
-
 const Books  = require('../models/books.model');
 const Users = require('../models/users.model');
 const makePagination = require('../midlewares/pagination.midleware');
 
-module.exports.index = (req, res) => {
-   
-  const listBook = async () => {
-    const userId = req.cookies.userId;
-    const getUser = await Users.findById(userId).exec();
-    Books.find().then((books)=> {
-      const page = parseInt(req.query.page) || 1;
-      const perPage = 10;
-      const startPage = (page - 1) * 10;
-      const endPage = page * perPage;
-      const pageCount = Math.ceil(books.length / perPage);
-      const newPagination = makePagination.customPagination(page, pageCount);
-      const quantity = req.signedCookies.quantityBook;
-      res.render('books', {
-        books: books.slice(startPage, endPage),
-        pageCount: newPagination,
-        currentPage: page,
-        users: getUser,
-        quantity: quantity || 0,
-      })
+module.exports.index = async (req, res) => {
+  const userId = req.cookies.userId;
+  const getUser = await Users.findById(userId).exec();
+  Books.find().then((books)=> {
+    const page = parseInt(req.query.page) || 1;
+    const perPage = 10;
+    const startPage = (page - 1) * 10;
+    const endPage = page * perPage;
+    const pageCount = Math.ceil(books.length / perPage);
+    const newPagination = makePagination.customPagination(page, pageCount);
+    const quantity = req.signedCookies.quantityBook;
+    res.render('books', {
+      books: books.slice(startPage, endPage),
+      pageCount: newPagination,
+      currentPage: page,
+      users: getUser,
+      quantity: quantity || 0,
     })
-  }
-  listBook();
+  })
 };
 
 module.exports.toCreate = (req, res) => {

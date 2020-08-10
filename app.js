@@ -10,6 +10,7 @@ const booksRoute = require('./routes/books.route');
 const transRoute = require('./routes/transactions.route');
 const authRoute = require('./routes/auth.route');
 const cartRoute = require('./routes/cart.route');
+const userApiRoute = require('./api/routes/auth.route');
 
 const authMidleware = require('./midlewares/auth.midleware');
 const sessionMidleware = require('./midlewares/session.midleware');
@@ -20,6 +21,7 @@ const port = 3000;
 app.set('view engine', 'pug');
 app.set('views','./views');
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.SESION_SECRET));
 app.use(cookieParser(process.env.CLOUDINARY_URL));
@@ -39,6 +41,9 @@ app.use('/cart', cartRoute);
 
 // Route auth
 app.use('/auth', authRoute);
+
+//Route api auth
+app.use('/api/login', userApiRoute);
 
 // listen for requests :)
 const listener = app.listen(port, () => {
