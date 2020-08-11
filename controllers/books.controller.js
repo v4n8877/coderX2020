@@ -26,7 +26,7 @@ module.exports.index = async (req, res) => {
       })
     })
   } catch (err) {
-    res.render('msgErr.pug')
+    res.render('msgErr')
   }
 
 };
