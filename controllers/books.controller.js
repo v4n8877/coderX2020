@@ -7,8 +7,6 @@ module.exports.index = async (req, res) => {
   try {
     const userId = req.cookies.userId;
     const getUser = await Users.findById(userId).exec();
-    var a;
-    a.b();
     Books.find().then((books)=> {
       const page = parseInt(req.query.page) || 1;
       const perPage = 10;
@@ -28,7 +26,6 @@ module.exports.index = async (req, res) => {
   } catch (err) {
     res.render('msgErr')
   }
-
 };
 
 module.exports.toCreate = (req, res) => {
