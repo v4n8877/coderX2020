@@ -18,7 +18,7 @@ const authMidleware = require('./midlewares/auth.midleware');
 const sessionMidleware = require('./midlewares/session.midleware');
 
 const app = express();
-const port = 3000;
+const port = process.evn.PORT || 3000;
 
 app.set('view engine', 'pug');
 app.set('views','./views');
